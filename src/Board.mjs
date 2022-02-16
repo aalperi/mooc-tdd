@@ -20,7 +20,7 @@ export class Board {
     return str;
   }
   drop(block) {
-    if(this.blocks.length>0 &&this.checkIfThereIsFallingBlock){
+    if(this.blocks.length>0 &&this.hasFalling()){
       throw "already falling";
     }
     else{      
@@ -28,24 +28,29 @@ export class Board {
     }
   }
   tick() {
+
     this.blocks.forEach(block => {
-      block.y += 1;
+      if(block.y===this.height-1){
+        block.falling=false;
+      } else
+        block.y += 1;
+      
     });
   }
   getBoardPixelColor(x, y) {
     if (this.blocks.length > 0) {
       for (let i = 0; i<this.blocks.length;i++){
-        if (this.blocks[i].x === x && this.blocks[i].y === y) {
+        if (this.blocks[i].x === x && this.blocks[i].y === y ) {
           return this.blocks[i].color;
         }
       }
     }
     return ".";
   }
-  checkIfThereIsFallingBlock(){
+  hasFalling(){
     if(this.blocks.length>0){
       for (let i = 0; i<this.blocks.length;i++){
-        if (getBoardPixelColor(this.blocks[i].x,this.blocks[i].y+1) ===".") {
+        if (this.blocks[i].falling) {
           return true;
         }
       }
