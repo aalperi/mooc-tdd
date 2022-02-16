@@ -28,9 +28,8 @@ export class Board {
     }
   }
   tick() {
-
     this.blocks.forEach(block => {
-      if(block.y===this.height-1){
+      if(block.y===this.height-1 || this.getBoardPixelColor(block.x,block.y+1)==="X"){
         block.falling=false;
       } else
         block.y += 1;
