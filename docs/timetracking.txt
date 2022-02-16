@@ -1,3 +1,11 @@
 Level 1
 - start 16.2. 8:20
-- end
+- end 16.2. 12:00
+- total 4h
+
+Level 2
+- start 16.2. 12:00
+- end 16.2. 13:15
+- total 45min
+
+Level 3
